@@ -1,0 +1,22 @@
+//  Add an item in ServerStorage
+//  Code
+local ToolNames = {"item", "Item", "Item"}
+//change "item" to tool name
+local Storage = game:GetService("ServerStorage")
+
+local Part = script.Parent
+local ClickDetector = Part:WaitForChild("ClickDetector")
+//add a click detector in the part linked to the script
+
+ClickDetector.MouseClick:connect(function(Player)
+	if Player and Player.Character then
+		local Backpack = Player:WaitForChild("Backpack")
+		for i = 1, #ToolNames do
+			local Tool = Storage:FindFirstChild(ToolNames[i])
+   			if Tool then
+    			Tool:clone().Parent = Backpack
+          //sends it to the backpack/toolBar
+  			end
+  		end
+ 	end
+end)
